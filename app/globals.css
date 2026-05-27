@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ─────────────────────────────────────── */
+:root {
+  --bg:          #f5f5f0;
+  --surface:     #ebebeb;
+  --border:      rgba(0,0,0,0.08);
+  --text-primary:   #0a0a0a;
+  --text-secondary: rgba(0,0,0,0.45);
+  --text-muted:     rgba(0,0,0,0.2);
+
+  --accent-corporate: #fbbf24;
+  --accent-projects:  #34d399;
+  --accent-decks:     #60a5fa;
+
+  --name-stroke: rgba(0,0,0,0.18);
+}
+
+.dark {
+  --bg:          #0a0a0a;
+  --surface:     #111111;
+  --border:      rgba(255,255,255,0.06);
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255,255,255,0.35);
+  --text-muted:     rgba(255,255,255,0.15);
+  --name-stroke:    rgba(255,255,255,0.18);
+}
+
+/* ── Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+}
+
+/* ── Ticker animation ───────────────────────────────────────────── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Smooth theme transitions ───────────────────────────────────── */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
+/* ── Scrollbar hide ─────────────────────────────────────────────── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Headings tighter tracking ──────────────────────────────────── */
+h1, h2, h3 {
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ── Selection color ────────────────────────────────────────────── */
+::selection {
+  background: rgba(251, 191, 36, 0.2);
+}
+
+/* ── Slide CTA hover (CSS-only, no useState needed) ─────────────── */
+.cta-link:hover .cta-circle {
+  transform: scale(1.12);
+  background-color: var(--cta-accent, #fbbf24) !important;
+}
+.cta-link:hover .cta-circle span {
+  color: #000 !important;
+}
+.cta-link:hover .cta-label {
+  color: var(--text-primary) !important;
+}
+
+/* ── Hero responsive (moved here to avoid JSX hydration mismatch) ── */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .hero-photo {
+    display: none !important;
+  }
+}
+
+/* ── WorkSection responsive ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  .work-panels {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── LogosStrip responsive ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .logos-strip {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── SlideItem responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .slide-item {
+    grid-template-columns: 1fr !important;
+  }
+  .slide-visual {
+    min-height: 200px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+}
