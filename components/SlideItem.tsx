@@ -122,16 +122,25 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: slide.screenshot ? 0 : 48,
+          padding: 48,
         }}
       >
         {slide.screenshot ? (
-          // Screenshot provided — fill the panel
+          // Screenshot — absolutely fills the padded area, contained within
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={slide.screenshot}
             alt={slide.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+            style={{
+              position: "absolute",
+              inset: 16,
+              width: "calc(100% - 32px)",
+              height: "calc(100% - 32px)",
+              objectFit: "contain",
+              objectPosition: "top center",
+              display: "block",
+              borderRadius: 8,
+            }}
           />
         ) : (
           // Placeholder — waiting for screenshot
