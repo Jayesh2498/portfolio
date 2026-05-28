@@ -72,32 +72,11 @@ export default function Nav() {
             >
               work
             </button>
-            <button
-              onClick={() => scrollTo("writing")}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: "var(--text-secondary)",
-                fontSize: 13,
-                fontWeight: 500,
-                letterSpacing: "0.02em",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.color = "var(--text-primary)")
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.color =
-                  "var(--text-secondary)")
-              }
-            >
-              writing
-            </button>
-
             {/* Say hi pill */}
             <a
-              href={`mailto:${meta.email}`}
+              href={meta.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -231,14 +210,10 @@ export default function Nav() {
           >
             work
           </button>
-          <button
-            onClick={() => scrollTo("writing")}
-            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-primary)", fontSize: 15, textAlign: "left" }}
-          >
-            writing
-          </button>
           <a
-            href={`mailto:${meta.email}`}
+            href={meta.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ color: "var(--text-primary)", fontSize: 15, textDecoration: "none" }}
           >
             say hi! ↗

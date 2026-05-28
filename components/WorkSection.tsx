@@ -19,7 +19,7 @@ const PANELS: {
     id: "projects",
     label: "Projects",
     accent: "#34d399",
-    sub1: "POS · ATS · ERP · Quiz",
+    sub1: "POS · ATS · ERP",
     sub2: "Vibe-coded live products",
   },
   {
@@ -33,8 +33,8 @@ const PANELS: {
     id: "decks",
     label: "Decks",
     accent: "#60a5fa",
-    sub1: "PRDs · Teardowns",
-    sub2: "Strategy & spec writing",
+    sub1: "Coming soon",
+    sub2: "PRDs · Teardowns · Strategy",
   },
 ];
 

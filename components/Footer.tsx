@@ -38,7 +38,9 @@ export default function Footer() {
           {footer.message}
         </p>
         <a
-          href={`mailto:${meta.email}`}
+          href={meta.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             fontSize: 14,
             color: "var(--text-primary)",

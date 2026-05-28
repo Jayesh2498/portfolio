@@ -21,6 +21,7 @@ type Slide = {
   period?: string;
   company?: string;
   domain?: string;
+  screenshot?: string;
 };
 
 interface Props {

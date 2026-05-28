@@ -14,6 +14,7 @@ type Slide = {
   period?: string;
   company?: string;
   domain?: string;
+  screenshot?: string;
 };
 
 interface Props {
@@ -49,6 +50,64 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
     return "";
   }, [slide.period, category]);
 
+  // Experience slides are full-width text only
+  if (category === "corporate") {
+    return (
+      <div className="slide-item" style={{ padding: "40px 48px 44px", minHeight: 420, display: "flex", flexDirection: "column" }}>
+
+        {/* Top row: counter + period */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+          <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600, letterSpacing: "0.06em" }}>
+            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </span>
+          <span style={{ fontSize: 11, color: "var(--text-muted)", letterSpacing: "0.04em" }}>
+            {slide.period}
+          </span>
+        </div>
+
+        {/* Company + title */}
+        <h2 style={{
+          fontSize: "clamp(20px, 2.2vw, 28px)", fontWeight: 800,
+          color: "var(--text-primary)", letterSpacing: "-0.02em",
+          marginBottom: 10, lineHeight: 1.2,
+        }}>
+          {slide.title}
+        </h2>
+
+        {/* Tags */}
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 24 }}>
+          {slide.tags.map((tag) => (
+            <span key={tag} style={{
+              fontSize: 10, fontWeight: 500, letterSpacing: "0.05em",
+              color: accent, backgroundColor: `${accent}12`,
+              padding: "3px 8px", borderRadius: 999,
+            }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Bullets — 2 column grid, fills remaining height */}
+        <ul style={{
+          listStyle: "none",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px 48px",
+          flex: 1,
+          alignContent: "center",
+        }}>
+          {slide.points.map((point, i) => (
+            <li key={i} style={{ position: "relative", paddingLeft: 16, fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)" }}>
+              <span style={{ position: "absolute", left: 0, color: accent, fontWeight: 700 }}>—</span>
+              {renderBoldText(point)}
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    );
+  }
+
   return (
     <div className="slide-item" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 420 }}>
 
@@ -63,42 +122,39 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: 48,
+          padding: slide.screenshot ? 0 : 48,
         }}
       >
-        {/* Glow blob */}
-        <div style={{
-          position: "absolute", width: 260, height: 260, borderRadius: "50%",
-          background: `radial-gradient(circle, ${accent}24 0%, transparent 70%)`,
-          filter: "blur(40px)", pointerEvents: "none",
-        }} />
-
-        {/* Mockup card */}
-        <div style={{
-          position: "relative", width: 180, borderRadius: 16,
-          background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.4)", padding: "28px 20px 24px",
-          display: "flex", flexDirection: "column", alignItems: "center", gap: 14,
-        }}>
-          <span style={{ fontSize: 36 }}>{slide.icon}</span>
-          <div style={{ display: "flex", flexDirection: "column", gap: 7, width: "100%" }}>
-            {[70, 90, 55].map((w, i) => (
-              <div key={i} style={{
-                height: 5, borderRadius: 3,
-                backgroundColor: `${accent}20`, width: `${w}%`, margin: "0 auto",
-              }} />
-            ))}
-          </div>
-          {slide.tags[0] && (
-            <span style={{
-              fontSize: 9, fontWeight: 600, letterSpacing: "0.08em",
-              textTransform: "uppercase", color: accent,
-              backgroundColor: `${accent}15`, padding: "3px 8px", borderRadius: 999,
+        {slide.screenshot ? (
+          // Screenshot provided — fill the panel
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={slide.screenshot}
+            alt={slide.title}
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+          />
+        ) : (
+          // Placeholder — waiting for screenshot
+          <>
+            <div style={{
+              position: "absolute", width: 260, height: 260, borderRadius: "50%",
+              background: `radial-gradient(circle, ${accent}18 0%, transparent 70%)`,
+              filter: "blur(40px)", pointerEvents: "none",
+            }} />
+            <div style={{
+              position: "relative", display: "flex", flexDirection: "column",
+              alignItems: "center", gap: 12,
             }}>
-              {slide.tags[0]}
-            </span>
-          )}
-        </div>
+              <span style={{ fontSize: 32, opacity: 0.4 }}>{slide.icon}</span>
+              <span style={{
+                fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase",
+                color: "var(--text-muted)", fontWeight: 500, opacity: 0.5,
+              }}>
+                Screenshot coming soon
+              </span>
+            </div>
+          </>
+        )}
       </div>
 
       {/* RIGHT — Info */}
