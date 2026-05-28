@@ -81,7 +81,7 @@ export default function Slider({ activeCategory, slides, accent }: Props) {
         }}
       >
         {slides.map((slide, i) => (
-          <div key={slide.id} style={{ minWidth: "100%", flexShrink: 0 }}>
+          <div key={slide.id} style={{ minWidth: "100%", maxWidth: "100%", width: "100%", flexShrink: 0, overflow: "hidden" }}>
             <SlideItem
               slide={slide}
               index={i}

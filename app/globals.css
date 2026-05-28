@@ -103,6 +103,11 @@ h1, h2, h3 {
   color: var(--text-primary) !important;
 }
 
+/* ── Work section scroll offset (sticky nav = 56px) ─────────────── */
+#work {
+  scroll-margin-top: 56px;
+}
+
 /* ── Hero responsive (moved here to avoid JSX hydration mismatch) ── */
 @media (max-width: 768px) {
   .hero-section {
@@ -112,6 +117,12 @@ h1, h2, h3 {
   .hero-photo {
     display: none !important;
   }
+  /* Tighten text column padding — photo is hidden so no need for tall frame */
+  .hero-text {
+    padding-top: 48px !important;
+    padding-bottom: 40px !important;
+    padding-right: 24px !important;
+  }
 }
 
 /* ── WorkSection responsive ──────────────────────────────────────── */
@@ -119,12 +130,30 @@ h1, h2, h3 {
   .work-panels {
     grid-template-columns: 1fr !important;
   }
+  /* Tighten panel padding so 3 stacked panels don't eat too much height */
+  .work-panel {
+    padding: 18px 20px 16px !important;
+  }
 }
 
 /* ── LogosStrip responsive ───────────────────────────────────────── */
 @media (max-width: 640px) {
-  .logos-strip {
-    grid-template-columns: 1fr 1fr !important;
+  /* Target the actual inner grid, not the wrapper */
+  .logos-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* Reset per-item right borders; use outline on every cell instead */
+  .logos-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+  /* Last row: no bottom border */
+  .logos-grid > div:nth-last-child(-n+2) {
+    border-bottom: none !important;
+  }
+  /* Restore column dividers except last in each row */
+  .logos-grid > div:not(:nth-child(3n)) {
+    border-right: 1px solid var(--border) !important;
   }
 }
 
@@ -137,5 +166,19 @@ h1, h2, h3 {
     min-height: 200px !important;
     border-right: none !important;
     border-bottom: 1px solid var(--border) !important;
+  }
+  /* Reduce right-panel padding on mobile */
+  .slide-right {
+    padding: 22px 20px 24px !important;
+  }
+  /* Reduce corporate slide outer padding on mobile */
+  .slide-corporate {
+    padding: 24px 20px 28px !important;
+    min-height: unset !important;
+  }
+  /* Collapse experience bullets to single column on mobile */
+  .experience-bullets {
+    grid-template-columns: 1fr !important;
+    gap: 10px 0 !important;
   }
 }

@@ -50,7 +50,7 @@ export default function Hero() {
       }}
     >
       {/* LEFT — Text */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 0, justifyContent: "center", paddingTop: 72, paddingBottom: 56, paddingRight: 48 }}>
+      <div className="hero-text" style={{ display: "flex", flexDirection: "column", gap: 0, justifyContent: "center", paddingTop: 72, paddingBottom: 56, paddingRight: 48 }}>
         <motion.p
           {...fadeUp(0)}
           style={{

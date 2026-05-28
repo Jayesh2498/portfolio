@@ -53,7 +53,7 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
   // Experience slides are full-width text only
   if (category === "corporate") {
     return (
-      <div className="slide-item" style={{ padding: "40px 48px 44px", minHeight: 420, display: "flex", flexDirection: "column" }}>
+      <div className="slide-item slide-corporate" style={{ padding: "40px 48px 44px", minHeight: 420, display: "flex", flexDirection: "column" }}>
 
         {/* Top row: counter + period */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
@@ -88,7 +88,7 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
         </div>
 
         {/* Bullets — 2 column grid, fills remaining height */}
-        <ul style={{
+        <ul className="experience-bullets" style={{
           listStyle: "none",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -167,7 +167,7 @@ export default function SlideItem({ slide, index, total, accent, category }: Pro
       </div>
 
       {/* RIGHT — Info */}
-      <div style={{ padding: "36px 36px 32px", display: "flex", flexDirection: "column" }}>
+      <div className="slide-right" style={{ padding: "36px 36px 32px", display: "flex", flexDirection: "column" }}>
 
         {/* Counter + date */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>

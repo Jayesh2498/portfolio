@@ -104,6 +104,7 @@ function Panel({
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="work-panel"
       style={{
         position: "relative",
         padding: "28px 28px 26px",

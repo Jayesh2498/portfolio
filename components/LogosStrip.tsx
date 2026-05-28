@@ -80,6 +80,7 @@ export default function LogosStrip() {
 
       {/* Logos row */}
       <div
+        className="logos-grid"
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${logos.companies.length}, 1fr)`,
