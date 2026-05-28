@@ -125,6 +125,7 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           {...fadeUp(0.4)}
+          className="hero-cta"
           style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
         >
           <button
