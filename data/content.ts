@@ -252,6 +252,7 @@ export const decks = {
         "Meal subscription model to drive retention over discounts",
         "The retention war food delivery hasn't started yet",
       ],
+      screenshot: "/screenshots/deck-food-delivery.png",
       ctaLabel: "Read Teardown",
       ctaLink: "#",
       fileUrl: "/decks/food-delivery-teardown.pdf",
