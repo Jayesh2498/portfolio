@@ -33,8 +33,8 @@ const PANELS: {
     id: "decks",
     label: "Decks",
     accent: "#60a5fa",
-    sub1: "Coming soon",
-    sub2: "PRDs · Teardowns · Strategy",
+    sub1: "Teardowns · Strategy",
+    sub2: "More coming soon",
   },
 ];
 

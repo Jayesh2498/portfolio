@@ -242,16 +242,19 @@ export const projects = {
 export const decks = {
   slides: [
     {
-      id: "coming-soon",
-      icon: "📂",
-      title: "Coming Soon",
-      tags: ["PRDs", "Teardowns", "Strategy"],
+      id: "food-delivery-teardown",
+      icon: "🍱",
+      title: "You Are What You Order",
+      tags: ["Product Teardown", "Food Delivery", "2026"],
       points: [
-        "Decks and PRDs are being prepared and will be added here shortly.",
+        "Zomato & Swiggy know everything about you — except what you eat",
+        "Teardown of the nutrition intelligence gap in food delivery",
+        "Meal subscription model to drive retention over discounts",
+        "The retention war food delivery hasn't started yet",
       ],
-      ctaLabel: "Check Back Soon",
+      ctaLabel: "Read Teardown",
       ctaLink: "#",
-      fileUrl: undefined as string | undefined,
+      fileUrl: "/decks/food-delivery-teardown.pdf",
     },
   ],
 };
