@@ -23,18 +23,18 @@ const PANELS: {
     sub2: "Vibe-coded live products",
   },
   {
-    id: "corporate",
-    label: "Experience",
-    accent: "#fbbf24",
-    sub1: "SuperAGI · GoKiwi · Navi",
-    sub2: "Full-time & internship roles",
-  },
-  {
     id: "decks",
     label: "Decks",
     accent: "#60a5fa",
     sub1: "Teardowns · Strategy",
     sub2: "More coming soon",
+  },
+  {
+    id: "corporate",
+    label: "Experience",
+    accent: "#fbbf24",
+    sub1: "SuperAGI · GoKiwi · Navi",
+    sub2: "Full-time & internship roles",
   },
 ];
 
